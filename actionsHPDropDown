@@ -1,0 +1,52 @@
+package actions;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
+import actionsLIB.HPDropDownsLIB;
+
+public class HPDropDown {
+
+	public WebDriver driver;
+
+	public HPDropDown(WebDriver driver) {
+		this.driver = driver;
+
+	}
+
+	public void getmoreDropDown() {
+		driver.findElement(HPDropDownsLIB.Moredropdown).click();
+
+	}
+
+	public void getselectvalue(String value) {
+
+		By selectvalue = By.xpath("//nav[@class= 'ground-zero-navigation'] //a[@href='" + value + "']");
+		driver.findElement(selectvalue).click();
+	}
+
+	public void verifyoptions() {
+
+		List<WebElement> groupList = driver.findElements(HPDropDownsLIB.Moredropdown);
+		for (int i = 0; i < groupList.size(); i++) {
+			String option = groupList.get(i).getAttribute("href");
+			if (option.equals("About us") || "Sergei's Solutions Hub".equals(option) || "Contact us".equals(option)
+					|| "Media Centre".equals(option) || "Blog".equals(option) || "Meerkats".equals(option)) {
+
+				System.out.println("Option value--" + option);
+
+			} else {
+				// failed
+
+			}
+
+		}
+
+	}
+
+	
+
+}
