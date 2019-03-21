@@ -1,0 +1,78 @@
+package actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import actionsLIB.HomePageLIB;
+import net.bytebuddy.asm.Advice.Argument;
+
+public class SeleniumActions {
+
+	private WebDriver driver;
+
+	public SeleniumActions(WebDriver driver) {
+		this.driver = driver;
+
+	}
+
+	public void mouseHover() {
+		Actions action = new Actions(driver);
+		WebElement element = driver.findElement(HomePageLIB.dropdown);
+		action.moveToElement(element).build().perform();
+	}
+
+	public void checkbox() {
+
+		int count = driver.findElements(By.id("")).size();
+		for (int i = 0; i <= count; i++) {
+			String text = driver.findElements(By.id("")).get(i).getAttribute("value");
+			if (text.equals(value)) {
+
+				driver.findElement(By.xpath("")).click();
+			}
+		}
+
+	}
+
+	public void jsClick() {
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		js.executeScript("arguments[0].click()", driver.findElement(By.xpath("")));
+	}
+	
+	public void clickCheckbox(String checkboxValue) {
+		driver.findElement(By.xpath("//label[contains(@for,'hc_f_filter_propertyType_')]/span[text()='"+checkboxValue+"']/../input")).click();
+	}
+	
+	public void verifyCheckbox(String checkboxValue) {
+		if(driver.findElement(By.xpath("//label[contains(@for,'hc_f_filter_propertyType_')]/span[text()='"+checkboxValue+"']/../input")).isDisplayed())
+		{
+			//log to report
+		}else {
+			
+		}
+	}
+
+	public void alert() {
+
+		driver.findElement(By.xpath("")).click();
+		System.out.println(driver.switchTo().alert().getText());
+		driver.switchTo().alert().accept();
+	}
+	
+	public void frames() {
+		driver.findElement(By.tagName("iframe")).Size());
+
+	
+	public void click() {
+		driver.findElement(By.id("")).sendKeys("Lenovo");
+		driver.findElement(By.id("")).sendKeys(Keys.ARROW_DOWN);
+		driver.findElement(By.xpath("")).sendKeys(Keys.ENTER);
+		
+	}
+	
+
+}
