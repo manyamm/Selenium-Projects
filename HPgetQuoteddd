@@ -1,0 +1,60 @@
+package actions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import actionsLIB.HPGetQuoteddLIB;
+
+public class HPGetQoutedd {
+	WebDriver driver;
+
+	public HPGetQoutedd(WebDriver driver) {
+		this.driver = driver;
+	}
+
+	public void getaquoteddxp() {
+		driver.findElement(HPGetQuoteddLIB.getaquotedd).click();
+	}
+
+	public void getdropdownvalue(String value) {
+		By selectvalue = By.xpath("//header//li[@class='start-comparing']//a[contains(text(), '"+value+"')]");
+		driver.findElement(selectvalue).click();
+	}
+
+	public void getday() {
+	Select dropdown	= new Select(driver.findElement(HPGetQuoteddLIB.selectday));
+	dropdown.selectByValue("");
+
+	}
+
+	public void getdayvalue(String value1) {
+		new Select(driver.findElement(HPGetQuoteddLIB.selectday)).selectByValue(value1);
+//		By dayvalue = By.xpath("//select/option[@value='" + value1 + "']");
+//		driver.findElement(dayvalue).click();
+	}
+
+	public void getmonth() {
+		driver.findElement(HPGetQuoteddLIB.selectmonth).click();
+	}
+
+	public void getmonthvalue(String value) {
+		By monthvalue = By.xpath("//select[@name='rememberme_primary_dobInputM']/option[@value='" + value + "']");
+		driver.findElement(monthvalue).click();
+	}
+
+	public void getyear() {
+		driver.findElement(HPGetQuoteddLIB.selectyear).click();
+	}
+
+	public void getyearvalue(String value3) {
+		By yearvalue = By.xpath("//select[@id='rememberme_primary_dobInputM']/option[@value='" + value3 + "']");
+		driver.findElement(yearvalue).click();
+
+	}
+
+	public void getreviewbenifitbtn() {
+		driver.findElement(HPGetQuoteddLIB.reviewbenifitbtn).click();
+	}
+
+}
